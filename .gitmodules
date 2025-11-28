@@ -1,3 +1,6 @@
 [submodule "modules/jai-imgui"]
 	path = modules/jai-imgui
 	url = https://github.com/overlord-systems/jai-imgui.git
+[submodule "modules/SDL3"]
+	path = modules/SDL3
+	url = https://github.com/jaktwo/SDL3.git
