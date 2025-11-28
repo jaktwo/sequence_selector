@@ -1,0 +1,27 @@
+# compilation output
+.dir-locals.el
+.build/*
+*.obj
+*.o
+*.lo
+*.slo
+*.ilk
+*.pdb
+*.exe
+*.out
+*.app
+*.dwo
+*.exp
+*.d
+*.gch
+*.pch
+.vs
+flecs.dll
+SDL3.dll
+assets/bin
+
+# executable
+clover_gLossEmUp_*
+
+# emacs backups..
+.#*
