@@ -20,7 +20,7 @@ main :: () {
     ctx := CreateContext();
     io := GetIO();
 
-    io.ConfigFlags_ |= .DockingEnable | .ViewportsEnable | .DpiEnableScaleViewports | .DpiEnableScaleFonts | .NavEnableKeyboard | .NavEnableGamepad;
+    io.ConfigFlags_ |= .ViewportsEnable | .DpiEnableScaleViewports | .DpiEnableScaleFonts | .NavEnableKeyboard;
     StyleColorsDark();
 
     style := GetStyle();
@@ -40,6 +40,14 @@ main :: () {
     ImplSDLGPU3_Init(*init_info);
 
     clear_color := SDL_FColor.{ a=1 };
+
+    window_flags: WindowFlags =
+        .NoDocking |
+        .NoDecoration |
+        .NoMove |
+        .NoCollapse |
+        .NoBringToFrontOnFocus
+    ;
 
     while !has_to_close {
         event: SDL_Event;
@@ -66,7 +74,18 @@ main :: () {
         ImplSDL3_NewFrame();
         NewFrame();
 
-        ShowDemoWindow();
+        // ShowDemoWindow();
+
+        viewport := GetMainViewport();
+
+        SetNextWindowPos(viewport.Pos);
+        SetNextWindowSize(viewport.Size);
+
+        active: bool;
+
+        Begin("sequence selector", *active, window_flags);
+
+        End();
 
         Render();
         draw_data := GetDrawData();
